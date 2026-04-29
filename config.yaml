@@ -1,0 +1,21 @@
+loop_interval_minutes: 60
+
+models:
+  ceo: "claude-opus-4-6"
+  subagents: "claude-sonnet-4-6"
+
+risk_defaults:
+  max_stake_per_bet: 100
+  max_total_exposure: 500
+  max_open_positions: 10
+
+pipeline:
+  worker_health_urls:
+    trades_to_tsdb: "http://trades2tsdb.poly.svc.cluster.local:9108"
+    events_to_weaviate: "http://events2weaviate.poly.svc.cluster.local:9108"
+    news_to_kafka: "http://news2kafka.poly.svc.cluster.local:9108"
+    get_relevant_news: "http://getrelevantnews.poly.svc.cluster.local:9108"
+    trades_to_trending: "http://trades2trending.poly.svc.cluster.local:9108"
+    trending_to_tsdb: "http://trending2tsdb.poly.svc.cluster.local:9108"
+  trend_lookback_hours: 24
+  zscore_threshold: 2.0
